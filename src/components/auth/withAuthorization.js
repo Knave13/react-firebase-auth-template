@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 
 import AuthUserContext from './AuthUserContext';
@@ -16,15 +18,17 @@ const withAuthorization = (authCondition) => (Component) => {
     }
 
     render() {
-      return (
-        <AuthUserContext.Consumer>
-          {authUser => authUser ? <Component /> : null}
-        </AuthUserContext.Consumer>
-      );
+        return this.props.authUser ? <Component /> : null;
     }
   }
+  const mapStateToProps = (state) => ({
+    authUser: state.sessionState.authUser,
+  });
 
-  return withRouter(WithAuthorization);
+  return compose(
+    withRouter,
+    connect(mapStateToProps),
+  )(WithAuthorization);
 }
 
 export default withAuthorization;
