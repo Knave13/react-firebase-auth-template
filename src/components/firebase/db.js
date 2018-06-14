@@ -17,7 +17,7 @@ export const doCreateUser = (id, username, email) =>
   db.collection('users').doc().set({
     username,
     email,
-    role : 'User',
+    role : 'Player',
     data : {
       level: 1,
       xp: 0,

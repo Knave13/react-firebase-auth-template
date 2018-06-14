@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 
-import AuthUserContext from './AuthUserContext';
+//import AuthUserContext from './AuthUserContext';
 import { firebase } from '../firebase';
 import * as routes from '../../constants/routes';
 
